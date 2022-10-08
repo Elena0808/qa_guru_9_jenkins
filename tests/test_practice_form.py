@@ -1,6 +1,7 @@
 from demoqa.models.controls import datepicker
 from demoqa.models.pages.automation_practice_form import *
 #browser.config.hold_browser_open = True
+from utils import attach
 
 
 def test_practice_form():
@@ -29,3 +30,8 @@ def test_practice_form():
     data_verification('test.png')
     data_verification('Россия, Москва')
     data_verification('Haryana Karnal')
+
+    attach.add_screenshot(browser)
+    attach.add_logs(browser)
+    attach.add_html(browser)
+    attach.add_video(browser)
