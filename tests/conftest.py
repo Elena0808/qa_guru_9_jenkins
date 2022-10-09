@@ -33,7 +33,7 @@ def setup_browser(request):
     browser.config.window_width = 1500
     browser.config.window_height = 900
 
-    options = Options()
+    # options = Options()
     selenoid_capabilities = {
         "browserName": "chrome",
         "browserVersion": browser_version,
@@ -42,14 +42,15 @@ def setup_browser(request):
             "enableVideo": True
         }
     }
-    options.capabilities.update(selenoid_capabilities)
+    # options.capabilities.update(selenoid_capabilities)
 
-    login = os.getenv('LOGIN')
-    password = os.getenv('PASSWORD')
+    login = os.getenv('LOGIN', 'user1')
+    password = os.getenv('PASSWORD', '1234')
 
     driver = webdriver.Remote(
         command_executor=f"https://{login}:{password}@selenoid.autotests.cloud/wd/hub",
-        options=options
+        # options=options
+        desired_capabilities=selenoid_capabilities
     )
     browser.config.driver = driver
 
