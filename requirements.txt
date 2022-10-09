@@ -3,3 +3,4 @@ selene==2.0.0b12
 allure-pytest==2.10.0
 python-dotenv==0.21.0
 selenium==4.4.3
+webdriver-manager==3.8.3
