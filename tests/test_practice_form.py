@@ -1,11 +1,29 @@
 import allure
 from allure_commons.types import Severity
+from selenium.webdriver.chrome.options import Options
+from selenium import webdriver
 from demoqa.models.controls import datepicker
 from demoqa.models.pages.automation_practice_form import *
 from utils import attach
 
 
 # browser.config.hold_browser_open = True
+def test_sucsesful():
+    options = Options()
+    selenoid_capabilities = {
+        "browserName": "chrome",
+        "browserVersion": "100.0",
+        "selenoid:options": {
+            "enableVNC": True,
+            "enableVideo": False
+        }
+    }
+
+    options.capabilities.update(selenoid_capabilities)
+    driver = webdriver.Remote(
+        command_executor="http://selenoid,autotests:4444/wd/hub",
+        desired_capabilities=options)
+    browser.config.driver = driver
 
 
 @allure.tag("web")
