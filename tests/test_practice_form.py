@@ -8,23 +8,6 @@ from utils import attach
 
 
 # browser.config.hold_browser_open = True
-def test_sucsesful():
-    options = Options()
-    selenoid_capabilities = {
-        "browserName": "chrome",
-        "browserVersion": "100.0",
-        "selenoid:options": {
-            "enableVNC": True,
-            "enableVideo": False
-        }
-    }
-
-    options.capabilities.update(selenoid_capabilities)
-    driver = webdriver.Remote(
-        command_executor="http://selenoid,autotests:4444/wd/hub",
-        desired_capabilities=options)
-    browser.config.driver = driver
-
 
 @allure.tag("web")
 @allure.severity(Severity.CRITICAL)
@@ -65,8 +48,3 @@ def test_practice_form():
         data_verification('test.png')
         data_verification('Россия, Москва')
         data_verification('Haryana Karnal')
-    with allure.step('Добавляем в отчет аттачменты'):
-        attach.add_screenshot(browser)
-        attach.add_logs(browser)
-        attach.add_html(browser)
-        attach.add_video(browser)

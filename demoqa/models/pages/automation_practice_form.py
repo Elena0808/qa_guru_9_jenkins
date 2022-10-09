@@ -2,14 +2,17 @@ import os
 
 from selene import have, command
 from selene.support.shared import browser
+from selene.support.shared.jquery_style import ss
 from demoqa.models.controls import dropdown
 from demoqa.models.controls.checkbox import select_checkbox
 from demoqa.models.controls.radiobutton import select_radiobutton
 
 
 def open_page(url, resourses):
-    browser.config.window_height, browser.config.window_width = 1000, 1000
     browser.open(url + resourses)
+    ads = ss('[id^=google_ads][id$=container__]')
+    if ads.with_(timeout=6).wait.until(have.size_greater_than_or_equal(3)):
+        ads.perform(command.js.remove)
 
 
 def set_first_and_last_name(first_name, last_name):
