@@ -6,6 +6,7 @@ from selene.support.shared.jquery_style import ss
 from demoqa.models.controls import dropdown
 from demoqa.models.controls.checkbox import select_checkbox
 from demoqa.models.controls.radiobutton import select_radiobutton
+from utils import path
 
 
 def open_page(url, resourses):
@@ -42,13 +43,8 @@ def set_hobbies(option, option1):
     select_checkbox('[for^=hobbies-checkbox]', option1).first.click().perform(command.js.scroll_into_view)
 
 
-def abs_path(relative_path):
-    path = os.path.abspath(relative_path)
-    return path
-
-
 def set_photo(photo):
-    browser.element('[id="uploadPicture"]').send_keys(abs_path(photo))
+    browser.element('[id="uploadPicture"]').send_keys(path.to_resource(photo))
 
 
 def set_address(current_address):

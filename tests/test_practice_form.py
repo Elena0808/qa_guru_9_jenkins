@@ -34,7 +34,7 @@ def test_practice_form():
         select_state('Haryana')
         select_city('Karnal')
     with allure.step('Добавляем фотографию'):
-        set_photo('../files_for_test/test.png')
+        set_photo('test.png')
     with allure.step('Отправляем форму'):
         submit()
     with allure.step('Проверяем заполненную форму'):
