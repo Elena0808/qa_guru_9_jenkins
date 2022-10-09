@@ -12,11 +12,8 @@ def open_page(url, resourses):
     browser.open(url + resourses)
 
 
-def set_first_name(first_name):
+def set_first_and_last_name(first_name, last_name):
     browser.element('#firstName').type(first_name)
-
-
-def set_last_name(last_name):
     browser.element('#lastName').type(last_name)
 
 
